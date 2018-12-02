@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Welcome to Remi's blog{% endblock %}
+
+{% block content %}
+    <h2>Categories</h2>
+    {% if categories %}
+        <ul>
+        {% for category in categories %}
+            <li><a href="{{ category.get_absolute_url }}">{{ category.title }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>There are no posts.</p>
+    {% endif %}
+
+    <h2>Newest Gmail:   <a href="/update">Refresh </h2>
+    {% if emails %}
+        <ul>
+        {% for post in emails %}
+            <li><iframe srcdoc="{{post}}" width="938"  height="580"></iframe></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>There are no posts.</p>
+    {% endif %}
+
+{% endblock %}
